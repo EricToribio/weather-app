@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.flexed{
+    display: flex;
+    align-items: center;
+}
+.nav-bar{
+    background-color: cornflowerblue;
+    justify-content: space-evenly;
+    color: white;
+    padding: 20px;
+}
+#nav-list{
+    list-style: none;
+}
+#nav-list li {
+    display: inline;
+    margin-left: 50px;
+}
+li button{
+    color: white;
+    font-size: 2em;
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
+}
+li button:hover{
+    color: black;
+}
+#container{
+    width: 53%;
+    min-height: 600px;
+
+    margin: 0 auto;
+}
+.header{
+    padding: 20px;
+    background-color: transparent;
+    border-bottom:solid black 3px ;
+    justify-content: space-between;
+}
+.forecast{
+    padding: 30px 0;
+    gap: 20px;
+    text-align: center;
+}
+.days img{
+    border-radius: 50%;
+    margin: 20px 0;
+    width: 80%;
+}
+.days{
+    flex: 1;
+    min-height: 400px;
+    background-color: lightgray;
+}
+.temps{
+    justify-content: space-between;
+    margin: 30px;
+    list-style: none;
+}
+.high{
+    color: red;
+    font-size: 2em;
+}
+.low{
+    color: blue;
+    font-size: 2em;
+}
+#cookies{
+    border: 3px solid black;
+    padding: 20px;
+}
+#cookies p{
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+#accept{
+    width: 120px;
+    background-color: lightblue;
+    border: 2px solid black;
+    box-shadow: black 2px 2px;
+}
+#accept:active{
+    box-shadow: 0 0 0 #fff;
+}
+p a{
+    color: blue;
+}
+#cookies{
+    position:fixed;
+    bottom: 100px;
+
+    width: 53%;
+}
+.hide{
+    display: none;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="nav-bar flexed">
+        <h1>Dojo Weather</h1>
+        <h1 class="hide" id="holder">holder</h1>
+        <form action="javascript:getInput();">
+            <input type="text" id="input" placeholder="Enter City">
+            <input type="button" value="submit">
+        </form>
+        <ul id="nav-list">
+            <li><button id="burbank" onclick="changeCity(this)">Burbank</button></li>
+            <li><button id="chicago" onclick="changeCity(this)">Chicago</button></li>
+            <li><button id="dallas" onclick="changeCity(this)">Dallas</button></li>
+        </ul>
+    </div>
+    <div id="container">
+        <div class="header flexed">
+            <h1 id="currentCity" on>San Jose</h1>
+            <div>
+                <label for="temp">show temperature in </label>
+                <select onchange="changeTemp(this)" name="temp" id="tempF-C">
+                    <option value="c">C</option>
+                    <option value="f">F</option>
+                </select>
+            </div>
+        </div>
+        <div class="flexed forecast">
+            <div class="days">
+                <h3 class="day">Today</h3>
+                <img class="pic" src="./assets/some_rain.png" alt="some rain">
+                <p class="weather">some rain</p>
+                <ul class="temps flexed">
+                    <li class="high" id="todayHigh">24°</li>
+                    <li class="low" id="todayLow">18°</li>
+                </ul>
+            </div>
+            <div class="days">
+                <h3 class="day">Tomorrow</h3>
+                <img class="pic" src="./assets/some_sun.png" alt="some sun">
+                <p class="weather">some sun</p>
+                <ul class="temps flexed">
+                    <li class="high" id="tomorrowHigh">27°</li>
+                    <li class="low" id="tomorrowLow">19°</li>
+                </ul>
+            </div>
+            <div class="days">
+                <h3 class="day">Friday</h3>
+                <img class="pic" src="./assets/some_clouds.png" alt="some clouds">
+                <p class="weather">some clouds</p>
+                <ul class="temps flexed">
+                    <li class="high" id="fridayHigh">21°</li>
+                    <li class="low" id="fridayLow">16°</li>
+                </ul>
+            </div>
+            <div class="days">
+                <h3 class="day">Saturday</h3>
+                <img class="pic" src="./assets/some_sun.png" alt="some sun">
+                <p class="weather">some sun</p>
+                <ul class="temps flexed">
+                    <li class="high" id="saturdayHigh">26°</li>
+                    <li class="low" id="saturdayLow">21°</li>
+                </ul>
+            </div>
+        </div>
+        <div id="cookies" class="flexed">
+            <img src="./assets/cookie.png" alt="cookie">
+            <p><b>Stop! Cookie time</b> <br>
+                We use cookies (sadly not the edible ones) to personalize content and ads, to provide social media
+                features and to analyse our traffic. <a href="">Read more...</a></p>
+            <button onclick="hide()" id="accept">I Accept</button>
+
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
