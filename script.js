@@ -43,39 +43,38 @@ async function getCurrentWeather(city = currentCity.innerText) {
 
         })
         .catch(err => {
-            alert("Not a valid city")
+            alert("Not a valid city");
         });
-    // data = await response.json();
-    console.log(data)
-changeTemp()
+
+    console.log(data);
+changeTemp();
 }
 
 function hide() {
-    cookies.classList.add('hide')
+    cookies.classList.add('hide');
 }
 async function changeCity(element) {
-    await getCurrentWeather(element.innerText)
-    // alert('You have selected the city of  ' + data.location.city + '.')
-    tempCity = currentCity.innerText
-    currentCity.innerText = data.location.city
-    element.innerText = tempCity
+    await getCurrentWeather(element.innerText);
+    tempCity = currentCity.innerText;
+    currentCity.innerText = data.location.city;
+    element.innerText = tempCity;
     
 }
 function changeTemp(element) {
-    changeWeatherPic()
-    var highs = document.getElementsByClassName('high')
-    var lows = document.getElementsByClassName('low')
-    console.log(highs)
+    changeWeatherPic();
+    var highs = document.getElementsByClassName('high');
+    var lows = document.getElementsByClassName('low');
+    console.log(highs);
     value = e.options[e.selectedIndex].value;
     if (value == "c") {
         for (let i = 0; i < highs.length; i++) {
-            highs[i].innerText = data.forecasts[i].high + "°"
-            lows[i].innerText = data.forecasts[i].low + "°"
+            highs[i].innerText = data.forecasts[i].high + "°";
+            lows[i].innerText = data.forecasts[i].low + "°";
         }
     } else if (value == "f") {
         for (let i = 0; i < highs.length; i++) {
-            highs[i].innerText = Math.floor((data.forecasts[i].high * 9 / 5) + 32) + "°"
-            lows[i].innerText = Math.floor((data.forecasts[i].low * 9 / 5) + 32) + "°"
+            highs[i].innerText = Math.floor((data.forecasts[i].high * 9 / 5) + 32) + "°";
+            lows[i].innerText = Math.floor((data.forecasts[i].low * 9 / 5) + 32) + "°";
         }
 
     }
@@ -83,21 +82,21 @@ function changeTemp(element) {
 
 
 async function getInput(element) {
-    var input = document.getElementById('input').value
-    console.log(input)
-    console.log(currentCity)
-    await getCurrentWeather(input)
-    currentCity.innerText = data.location.city
-    changeTemp(input)
+    var input = document.getElementById('input').value;
+    console.log(input);
+    console.log(currentCity);
+    await getCurrentWeather(input);
+    currentCity.innerText = data.location.city;
+    changeTemp(input);
 
 }
 
 function changeWeatherPic() {
-    let pic = document.getElementsByClassName('pic')
-    let weather = document.getElementsByClassName('weather')
+    let pic = document.getElementsByClassName('pic');
+    let weather = document.getElementsByClassName('weather');
     for (let i = 0; i < pic.length; i++) {
         weather[i].innerText = data.forecasts[i].text
-        console.log(data.forecasts[i].text)
+        console.log(data.forecasts[i].text);
         pic[i].alt = data.forecasts[i].text
         if (data.forecasts[i].text == "Mostly Cloudy" || data.forecasts[i].text == "Partly Cloudy" || data.forecasts[i].text == "Cloudy") {
             pic[i].src = "./assets/some_clouds.png"
