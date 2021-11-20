@@ -97,6 +97,7 @@ function changeWeatherPic() {
     let weather = document.getElementsByClassName('weather')
     for (let i = 0; i < pic.length; i++) {
         weather[i].innerText = data.forecasts[i].text
+        console.log(data.forecasts[i].text)
         pic[i].alt = data.forecasts[i].text
         if (data.forecasts[i].text == "Mostly Cloudy" || data.forecasts[i].text == "Partly Cloudy" || data.forecasts[i].text == "Cloudy") {
             pic[i].src = "./assets/some_clouds.png"
