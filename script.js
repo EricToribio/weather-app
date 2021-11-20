@@ -62,7 +62,7 @@ async function changeCity(element) {
     
 }
 function changeTemp(element) {
-    changeWeatherPic
+    changeWeatherPic()
     var highs = document.getElementsByClassName('high')
     var lows = document.getElementsByClassName('low')
     console.log(highs)
