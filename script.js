@@ -20,14 +20,15 @@ var cDallasLow = [17, 7, 2, 6]
 var tempCity
 let data
 
+window.addEventListener('load', ( getCurrentWeather()))
 
 //Accuweather keycode hGQA3833XeHWWUSMtO5lGgABACyVJ9VD
 // Kelvin to Celsius: C = K - 273 (C = K - 273.15 if you want to be more precise)
 // Kelvin to Fahrenheit: F = 9/5(K - 273) + 32 or F = 1.8(K - 273) + 32.
 // Celsius to Fahrenheit: F = 9/5(C) + 32 or F = 1.80(C) + 32.
 // Celsius to Kelvin: K = C + 273 (or K = C + 271.15 to be more precise)
-async function getCurrentWeather(city) {
-    var response = await fetch("https://yahoo-weather5.p.rapidapi.com/weather?location=" + city + "&format=json&u=c", {
+async function getCurrentWeather(city = currentCity.innerText) {
+    await fetch("https://yahoo-weather5.p.rapidapi.com/weather?location=" + city + "&format=json&u=c", {
 
         "method": "GET",
         "headers": {
@@ -35,9 +36,18 @@ async function getCurrentWeather(city) {
             "x-rapidapi-key": "f2edd53b8cmsh2e6ed2306fe8cc6p11d225jsn02d97e90c363"
         }
     })
-    data = await response.json();
-    console.log(data)
+    .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            data = res;
 
+        })
+        .catch(err => {
+            alert("Not a valid city")
+        });
+    // data = await response.json();
+    console.log(data)
+changeTemp()
 }
 
 function hide() {
@@ -45,14 +55,14 @@ function hide() {
 }
 async function changeCity(element) {
     await getCurrentWeather(element.innerText)
-    alert('You have selected the city of  ' + element.innerText + '.')
+    // alert('You have selected the city of  ' + data.location.city + '.')
     tempCity = currentCity.innerText
     currentCity.innerText = data.location.city
     element.innerText = tempCity
-    changeTemp()
+    
 }
 function changeTemp(element) {
-    changeWeatherPIC()
+    changeWeatherPic
     var highs = document.getElementsByClassName('high')
     var lows = document.getElementsByClassName('low')
     console.log(highs)
@@ -67,18 +77,10 @@ function changeTemp(element) {
             highs[i].innerText = Math.floor((data.forecasts[i].high * 9 / 5) + 32) + "°"
             lows[i].innerText = Math.floor((data.forecasts[i].low * 9 / 5) + 32) + "°"
         }
-        // }
+
     }
 }
-async function onStart(element) {
-    if (element.innerText == "San Jose") {
-        console.log(currentCity)
-        await getCurrentWeather(currentCity.innerText)
-        changeTemp(element.innerText)
-        
-    }
-}
-onStart(currentCity)
+
 
 async function getInput(element) {
     var input = document.getElementById('input').value
@@ -87,10 +89,10 @@ async function getInput(element) {
     await getCurrentWeather(input)
     currentCity.innerText = data.location.city
     changeTemp(input)
-    
+
 }
 
-function changeWeatherPIC() {
+function changeWeatherPic() {
     let pic = document.getElementsByClassName('pic')
     let weather = document.getElementsByClassName('weather')
     for (let i = 0; i < pic.length; i++) {
@@ -101,11 +103,8 @@ function changeWeatherPIC() {
         }
         else if (data.forecasts[i].text == "Sunny" || data.forecasts[i].text == "Mostly Sunny") {
             pic[i].src = "./assets/some_sun.png"
-
-
         } else if (data.forecasts[i].text == "Rain" || data.forecasts[i].text == "Scattered Showers") {
             pic[i].src = "./assets/some_rain.png"
         }
-
     }
 }
